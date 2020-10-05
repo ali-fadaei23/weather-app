@@ -16,6 +16,11 @@ class App extends Component {
     error: null,
   };
 
+  constructor(props) {
+    super(props);
+    this.getCurrentWeather = this.getCurrentWeather.bind(this)
+  }
+
   getCurrentWeather(e) {
     e.preventDefault();
     const city = e.target.city.value;
