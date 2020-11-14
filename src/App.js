@@ -1,16 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
-import { getWeatherInfo } from "./ApiService";
+import { getWeatherInfo, getForecastWeather } from "./ApiService";
 import "./App.css";
 import FormWeather from "./Components/FormWeather";
 import WeatherData from "./Components/WeatherData";
+import WeatherForecastData from "./Components/WeatherForecastData";
 
 class App extends Component {
   state = {
     temperature: null,
+    selectedCity: null,
     city: null,
     country: null,
     description: null,
+    date: [],
     humidity: null,
     speed: null,
     error: null,
@@ -18,14 +21,45 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.getCurrentWeather = this.getCurrentWeather.bind(this)
+    this.getCurrentWeather = this.getCurrentWeather.bind(this);
+    this.getForecastWeather = this.getForecastWeather.bind(this);
   }
 
   getCurrentWeather(e) {
     e.preventDefault();
-    const city = e.target.city.value;
-    getWeatherInfo(city).then((data) => {
-      if (city) {
+    this.setState({ selectedCity: e.target.city.value }, () => {
+      getWeatherInfo(this.state.selectedCity)
+        .then((data) => {
+          this.setState({
+            temperature: data.main.temp,
+            city: data.name,
+            country: data.sys.country,
+            humidity: data.main.humidity,
+            description: data.weather[0].description,
+            speed: data.wind.speed,
+            error: " ",
+          });
+        })
+        .catch((error) => {
+          this.setState({
+            temperature: null,
+            city: null,
+            country: null,
+            description: null,
+            humidity: null,
+            speed: null,
+            date: null,
+            error: error.message,
+          });
+        });
+    });
+    console.log(getWeatherInfo);
+  }
+
+  getForecastWeather(e) {
+    e.preventDefault();
+    getForecastWeather(this.state.selectedCity)
+      .then((data) => {
         this.setState({
           temperature: data.main.temp,
           city: data.name,
@@ -35,7 +69,8 @@ class App extends Component {
           speed: data.wind.speed,
           error: " ",
         });
-      } else {
+      })
+      .catch((error) => {
         this.setState({
           temperature: null,
           city: null,
@@ -43,11 +78,49 @@ class App extends Component {
           description: null,
           humidity: null,
           speed: null,
-          error: "please Enter The City..",
+          date: null,
+          error: error.message,
         });
-      }
-    });
+      });
+
+    console.log(getForecastWeather);
   }
+
+  getWeather() {
+    return Promise.all([
+      this.getCurrentWeather(),
+      this.getForecastWeather(),
+    ]).then(([res1, res2]) => {
+      console.log("Result", res1, res2);
+      console.log("ali");
+    });
+    
+    
+  }
+
+  // .then((data) => {
+  //   this.setState({
+  //     temperature: data.main.temp,
+  //     city: data.name,
+  //     country: data.sys.country,
+  //     humidity: data.main.humidity,
+  //     description: data.weather[0].description,
+  //     speed: data.wind.speed,
+  //     error: " ",
+  //   });
+  // })
+  // .catch((error) => {
+  //   this.setState({
+  //     temperature: null,
+  //     city: null,
+  //     country: null,
+  //     description: null,
+  //     humidity: null,
+  //     speed: null,
+  //     date: null,
+  //     error: error.message,
+  //   });
+  // });
 
   render() {
     return (
@@ -62,6 +135,7 @@ class App extends Component {
           description={this.state.description}
           error={this.state.error}
         />
+        <WeatherForecastData onClick={this.getForecastWeather} />
       </div>
     );
   }
