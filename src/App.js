@@ -53,7 +53,6 @@ class App extends Component {
           });
         });
     });
-    console.log(getWeatherInfo);
   }
 
   getForecastWeather(e) {
@@ -61,13 +60,7 @@ class App extends Component {
     getForecastWeather(this.state.selectedCity)
       .then((data) => {
         this.setState({
-          temperature: data.main.temp,
-          city: data.name,
-          country: data.sys.country,
-          humidity: data.main.humidity,
-          description: data.weather[0].description,
-          speed: data.wind.speed,
-          error: " ",
+          date: [data.list[8].dt_txt, data.list[2].main.temp],
         });
       })
       .catch((error) => {
@@ -82,8 +75,6 @@ class App extends Component {
           error: error.message,
         });
       });
-
-    console.log(getForecastWeather);
   }
 
   getWeather() {
@@ -92,35 +83,8 @@ class App extends Component {
       this.getForecastWeather(),
     ]).then(([res1, res2]) => {
       console.log("Result", res1, res2);
-      console.log("ali");
     });
-    
-    
   }
-
-  // .then((data) => {
-  //   this.setState({
-  //     temperature: data.main.temp,
-  //     city: data.name,
-  //     country: data.sys.country,
-  //     humidity: data.main.humidity,
-  //     description: data.weather[0].description,
-  //     speed: data.wind.speed,
-  //     error: " ",
-  //   });
-  // })
-  // .catch((error) => {
-  //   this.setState({
-  //     temperature: null,
-  //     city: null,
-  //     country: null,
-  //     description: null,
-  //     humidity: null,
-  //     speed: null,
-  //     date: null,
-  //     error: error.message,
-  //   });
-  // });
 
   render() {
     return (
@@ -135,7 +99,11 @@ class App extends Component {
           description={this.state.description}
           error={this.state.error}
         />
-        <WeatherForecastData onClick={this.getForecastWeather} />
+        <WeatherForecastData
+          onClick={this.getForecastWeather}
+          date={this.state.date[0]}
+          temp={this.state.date[1]}
+        />
       </div>
     );
   }
