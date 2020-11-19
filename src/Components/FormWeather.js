@@ -1,23 +1,27 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
+import Form from "react-bootstrap/Form";
 
 const FormWeather = (props) => (
   <Form onSubmit={props.onSubmit}>
-    <Card style={{ width: "auto", alignItems: "center" }}>
-      <Card.Body>
-        <Form.Control
-          type="text"
-          placeholder="City...."
-          name="city"
-          style={{ width: "150px" }}
-        />
-        <Button variant="primary" type="submit">
-          Get Weather
-        </Button>
+    <Card style={{ width: "50%", alignItems: "center", margin: " 15px auto " }}>
+      <Card.Body style={{ margin: "5px auto" }}>
+        <div>
+          <Form.Control
+            type="text"
+            placeholder="City...."
+            name="city"
+            style={{ width: "150px" }}
+          />
+          <Button
+            variant="primary"
+            type="submit"
+            style={{ margin: "5px" }}
+          >
+            Get Weather
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   </Form>

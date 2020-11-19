@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
 import { getWeatherInfo, getForecastWeather } from "./ApiService";
 import "./App.css";
 import FormWeather from "./Components/FormWeather";
@@ -13,7 +14,7 @@ class App extends Component {
     city: null,
     country: null,
     description: null,
-    date: [],
+    forecast: [{}],
     humidity: null,
     speed: null,
     error: null,
@@ -21,8 +22,10 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    // Bind
     this.getCurrentWeather = this.getCurrentWeather.bind(this);
     this.getForecastWeather = this.getForecastWeather.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   getCurrentWeather(e) {
@@ -37,7 +40,6 @@ class App extends Component {
             humidity: data.main.humidity,
             description: data.weather[0].description,
             speed: data.wind.speed,
-            error: " ",
           });
         })
         .catch((error) => {
@@ -60,7 +62,15 @@ class App extends Component {
     getForecastWeather(this.state.selectedCity)
       .then((data) => {
         this.setState({
-          date: [data.list[8].dt_txt, data.list[2].main.temp],
+          forecast: [
+            {
+              temp: data.list[0].main.temp,
+              humidity: data.list[0].main.humidity,
+              condition: data.list[0].weather[0].description,
+              speed: data.list[0].wind.speed,
+              date: data.list[0].dt_txt,
+            },
+          ],
         });
       })
       .catch((error) => {
@@ -86,6 +96,20 @@ class App extends Component {
     });
   }
 
+  reset() {
+    this.setState({
+      temperature: null,
+      selectedCity: null,
+      city: null,
+      country: null,
+      description: null,
+      forecast: [{}],
+      humidity: null,
+      speed: null,
+      error: null,
+    });
+  }
+
   render() {
     return (
       <div id="main">
@@ -101,9 +125,20 @@ class App extends Component {
         />
         <WeatherForecastData
           onClick={this.getForecastWeather}
-          date={this.state.date[0]}
-          temp={this.state.date[1]}
+          date={this.state.forecast[0].date}
+          temp={this.state.forecast[0].temp}
+          humidity={this.state.forecast[0].humidity}
+          condition={this.state.forecast[0].condition}
+          speed={this.state.forecast[0].speed}
         />
+        <Button
+          variant="primary"
+          type="click"
+          style={{ margin: "5px" }}
+          onClick={this.reset}
+        >
+          Reset Weather
+        </Button>
       </div>
     );
   }
