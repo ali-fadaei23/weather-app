@@ -14,7 +14,7 @@ class App extends Component {
     city: null,
     country: null,
     description: null,
-    forecast: [{}],
+    forecast: [],
     humidity: null,
     speed: null,
     error: null,
@@ -70,6 +70,13 @@ class App extends Component {
               speed: data.list[0].wind.speed,
               date: data.list[0].dt_txt,
             },
+            {
+              temp: data.list[6].main.temp,
+              humidity: data.list[6].main.humidity,
+              condition: data.list[6].weather[0].description,
+              speed: data.list[6].wind.speed,
+              date: data.list[6].dt_txt,
+            },
           ],
         });
       })
@@ -103,7 +110,7 @@ class App extends Component {
       city: null,
       country: null,
       description: null,
-      forecast: [{}],
+      forecast: [],
       humidity: null,
       speed: null,
       error: null,
@@ -125,11 +132,39 @@ class App extends Component {
         />
         <WeatherForecastData
           onClick={this.getForecastWeather}
-          date={this.state.forecast[0].date}
-          temp={this.state.forecast[0].temp}
-          humidity={this.state.forecast[0].humidity}
-          condition={this.state.forecast[0].condition}
-          speed={this.state.forecast[0].speed}
+          forecast={this.state.forecast.map((item, index) =>
+            this.state.forecast.length !== 0 ? (
+              <div
+                key={index}
+                style={{
+                  color: "#ffffff",
+                  display: "flex",
+                  padding: "20px",
+                }}
+              >
+                <div style={{ border: "solid", marginRight: "5px" }}>
+                  <div>
+                    <span>Temperature: {item.temp}</span>
+                  </div>
+                  <div>
+                    <span>Humidity: {item.humidity}</span>
+                  </div>
+                  <div>
+                    <span>Condition: {item.condition}</span>
+                  </div>
+                  <div>
+                    <span>Speed: {item.speed}</span>
+                  </div>
+
+                  <div>
+                    <span>Date: {item.date}</span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div style={{ border: "solid" }}></div>
+            )
+          )}
         />
         <Button
           variant="primary"

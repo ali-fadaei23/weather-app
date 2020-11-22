@@ -16,16 +16,7 @@ const WeatherForecastData = (props) => (
       <Col sm={9}>
         <Tab.Content>
           <Tab.Pane eventKey="first">
-            <div
-              style={{
-                color: "#ffffff",
-                border: "solid",
-                display: "inline-block",
-                margin: "5px",
-              }}
-            >
-              {props.forecast}
-            </div>
+            <div>{props.forecast}</div>
           </Tab.Pane>
         </Tab.Content>
       </Col>
