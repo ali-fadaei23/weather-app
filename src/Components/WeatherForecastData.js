@@ -15,8 +15,8 @@ const WeatherForecastData = (props) => (
       </Col>
       <Col sm={9}>
         <Tab.Content>
-          <Tab.Pane eventKey="first">
-            <div>{props.forecast}</div>
+          <Tab.Pane eventKey="first" style={{ display: "flex" }}>
+            {props.forecast}
           </Tab.Pane>
         </Tab.Content>
       </Col>

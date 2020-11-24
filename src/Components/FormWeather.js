@@ -14,11 +14,7 @@ const FormWeather = (props) => (
             name="city"
             style={{ width: "150px" }}
           />
-          <Button
-            variant="primary"
-            type="submit"
-            style={{ margin: "5px" }}
-          >
+          <Button variant="primary" type="submit" style={{ margin: "5px" }}>
             Get Weather
           </Button>
         </div>

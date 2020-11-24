@@ -40,6 +40,7 @@ class App extends Component {
             humidity: data.main.humidity,
             description: data.weather[0].description,
             speed: data.wind.speed,
+            error: null,
           });
         })
         .catch((error) => {
@@ -161,9 +162,7 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-            ) : (
-              <div style={{ border: "solid" }}></div>
-            )
+            ) : null
           )}
         />
         <Button
