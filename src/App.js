@@ -4,8 +4,8 @@ import Button from "react-bootstrap/Button";
 import { getWeatherInfo, getForecastWeather } from "./ApiService";
 import "./App.css";
 import FormWeather from "./Components/FormWeather";
-import WeatherData from "./Components/WeatherData";
-import WeatherForecastData from "./Components/WeatherForecastData";
+import CurrentWeatherData from "./Components/CurrentWeatherData";
+import ForecastWeatherData from "./Components/ForecastWeatherData";
 
 class App extends Component {
   state = {
@@ -62,6 +62,9 @@ class App extends Component {
     e.preventDefault();
     getForecastWeather(this.state.selectedCity)
       .then((data) => {
+        function formatDate(date) {
+          return date.split(" ").slice(0, 1).toString().replace(/-/g, "/");
+        }
         this.setState({
           forecast: [
             {
@@ -69,14 +72,35 @@ class App extends Component {
               humidity: data.list[0].main.humidity,
               condition: data.list[0].weather[0].description,
               speed: data.list[0].wind.speed,
-              date: data.list[0].dt_txt,
+              date: formatDate(data.list[0].dt_txt),
             },
             {
-              temp: data.list[6].main.temp,
-              humidity: data.list[6].main.humidity,
-              condition: data.list[6].weather[0].description,
-              speed: data.list[6].wind.speed,
-              date: data.list[6].dt_txt,
+              temp: data.list[4].main.temp,
+              humidity: data.list[4].main.humidity,
+              condition: data.list[4].weather[0].description,
+              speed: data.list[4].wind.speed,
+              date: formatDate(data.list[4].dt_txt),
+            },
+            {
+              temp: data.list[12].main.temp,
+              humidity: data.list[12].main.humidity,
+              condition: data.list[12].weather[0].description,
+              speed: data.list[12].wind.speed,
+              date: formatDate(data.list[12].dt_txt),
+            },
+            {
+              temp: data.list[20].main.temp,
+              humidity: data.list[20].main.humidity,
+              condition: data.list[20].weather[0].description,
+              speed: data.list[20].wind.speed,
+              date: formatDate(data.list[20].dt_txt),
+            },
+            {
+              temp: data.list[28].main.temp,
+              humidity: data.list[28].main.humidity,
+              condition: data.list[28].weather[0].description,
+              speed: data.list[28].wind.speed,
+              date: formatDate(data.list[28].dt_txt),
             },
           ],
         });
@@ -122,7 +146,7 @@ class App extends Component {
     return (
       <div id="main">
         <FormWeather onSubmit={this.getCurrentWeather} />
-        <WeatherData
+        <CurrentWeatherData
           temperature={this.state.temperature}
           city={this.state.city}
           country={this.state.country}
@@ -131,7 +155,7 @@ class App extends Component {
           description={this.state.description}
           error={this.state.error}
         />
-        <WeatherForecastData
+        <ForecastWeatherData
           onClick={this.getForecastWeather}
           forecast={this.state.forecast.map((item, index) =>
             this.state.forecast.length !== 0 ? (
