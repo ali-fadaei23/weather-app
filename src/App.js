@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
+import "./App.css";
 import Button from "react-bootstrap/Button";
 import { getWeatherInfo, getForecastWeather } from "./ApiService";
-import "./App.css";
 import FormWeather from "./Components/FormWeather";
 import CurrentWeatherData from "./Components/CurrentWeatherData";
 import ForecastWeatherData from "./Components/ForecastWeatherData";
@@ -146,15 +146,17 @@ class App extends Component {
     return (
       <div id="main">
         <FormWeather onSubmit={this.getCurrentWeather} />
-        <CurrentWeatherData
-          temperature={this.state.temperature}
-          city={this.state.city}
-          country={this.state.country}
-          humidity={this.state.humidity}
-          speed={this.state.speed}
-          description={this.state.description}
-          error={this.state.error}
-        />
+        {this.state.city !== null ? (
+          <CurrentWeatherData
+            temperature={this.state.temperature}
+            city={this.state.city}
+            country={this.state.country}
+            humidity={this.state.humidity}
+            speed={this.state.speed}
+            description={this.state.description}
+            error={this.state.error}
+          />
+        ) : null}
         <ForecastWeatherData
           onClick={this.getForecastWeather}
           forecast={this.state.forecast.map((item, index) =>
@@ -163,7 +165,7 @@ class App extends Component {
                 key={index}
                 style={{
                   color: "#ffffff",
-                  display: "flex",
+                  display: "inline",
                   padding: "20px",
                 }}
               >
