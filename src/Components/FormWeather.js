@@ -1,20 +1,19 @@
 import React from "react";
+import "./FormWeather.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const FormWeather = (props) => (
-  <Form
-    onSubmit={props.onSubmit}
-    style={{ width: "50%", alignItems: "center", margin: " 15px auto " }}
-  >
-    <div style={{ margin: "5px auto" }}>
+  <Form id="form" onSubmit={props.onSubmit}>
+    <div className="form-weather">
       <Form.Control
+        className="input-location"
         type="text"
         placeholder="City...."
         name="city"
-        style={{ width: "150px" }}
       />
-      <Button variant="primary" type="submit" style={{ margin: "5px" }}>
+
+      <Button className="btn-get-weather btn-primary" type="submit">
         Get Weather
       </Button>
     </div>

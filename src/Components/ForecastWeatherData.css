@@ -1,0 +1,13 @@
+#forecast-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-forecast-weather {
+  border: 1px solid #184aa3;
+  background-color: #184aa3;
+  border-radius: 1px;
+}
+
+.forecast-info {
+}

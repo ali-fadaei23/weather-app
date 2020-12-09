@@ -1,10 +1,72 @@
-.App {
+/* ############### Default Style ############### */
+
+html,
+body {
+  height: 100%;
   text-align: center;
 }
 
 body {
-  background-color: #1a4266;
   background-image: url(Asset/Background/Background-5.jpg);
+  backdrop-filter: blur(6px);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* ############### App Style ############### */
+
+#main {
+  margin: 0 auto;
+  filter: drop-shadow(3px 4px 9px #000000);
+  border: 3px solid #184aa3;
+  text-align: center;
+}
+
+#info-container {
+  background-image: url(Asset/Background/Background-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.weather {
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.img-weather {
+  width: 100%;
+}
+
+.forecast-data {
+}
+
+.forecast-container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.btn-reset-weather {
+  border: 1px solid #184aa3;
+  background: #184aa3;
+  border-radius: 1px;
+}
+
+.forecast-container::-webkit-scrollbar {
+}
+
+.forecast-container::-webkit-scrollbar-track {
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
 }

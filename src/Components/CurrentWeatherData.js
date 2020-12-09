@@ -2,7 +2,7 @@ import React from "react";
 import "./CurrentWeatherData.css";
 
 const WeatherData = (props) => (
-  <div id={"mainWeatherData"} >
+  <div id="main-weather-data" style={{ border: "solid" }}>
     <div>
       {props.temperature && <span>Temperature: {props.temperature}</span>}
     </div>

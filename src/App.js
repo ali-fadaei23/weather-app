@@ -1,7 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import "./App.css";
+import BackgroundWeather from "./Asset/ClearSky/Background-5.jpg";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import { getWeatherInfo, getForecastWeather } from "./ApiService";
 import FormWeather from "./Components/FormWeather";
 import CurrentWeatherData from "./Components/CurrentWeatherData";
@@ -16,6 +21,7 @@ class App extends Component {
     description: null,
     forecast: [],
     humidity: null,
+    alert: false,
     speed: null,
     error: null,
   };
@@ -26,6 +32,7 @@ class App extends Component {
     this.getCurrentWeather = this.getCurrentWeather.bind(this);
     this.getForecastWeather = this.getForecastWeather.bind(this);
     this.reset = this.reset.bind(this);
+    this.toCelsius = this.toCelsius.bind(this);
   }
 
   getCurrentWeather(e) {
@@ -34,7 +41,7 @@ class App extends Component {
       getWeatherInfo(this.state.selectedCity)
         .then((data) => {
           this.setState({
-            temperature: data.main.temp,
+            temperature: this.toCelsius(data.main.temp),
             city: data.name,
             country: data.sys.country,
             humidity: data.main.humidity,
@@ -68,35 +75,35 @@ class App extends Component {
         this.setState({
           forecast: [
             {
-              temp: data.list[0].main.temp,
+              temp: this.toCelsius(data.list[0].main.temp),
               humidity: data.list[0].main.humidity,
               condition: data.list[0].weather[0].description,
               speed: data.list[0].wind.speed,
               date: formatDate(data.list[0].dt_txt),
             },
             {
-              temp: data.list[4].main.temp,
+              temp: this.toCelsius(data.list[0].main.temp),
               humidity: data.list[4].main.humidity,
               condition: data.list[4].weather[0].description,
               speed: data.list[4].wind.speed,
               date: formatDate(data.list[4].dt_txt),
             },
             {
-              temp: data.list[12].main.temp,
+              temp: this.toCelsius(data.list[0].main.temp),
               humidity: data.list[12].main.humidity,
               condition: data.list[12].weather[0].description,
               speed: data.list[12].wind.speed,
               date: formatDate(data.list[12].dt_txt),
             },
             {
-              temp: data.list[20].main.temp,
+              temp: this.toCelsius(data.list[0].main.temp),
               humidity: data.list[20].main.humidity,
               condition: data.list[20].weather[0].description,
               speed: data.list[20].wind.speed,
               date: formatDate(data.list[20].dt_txt),
             },
             {
-              temp: data.list[28].main.temp,
+              temp: this.toCelsius(data.list[0].main.temp),
               humidity: data.list[28].main.humidity,
               condition: data.list[28].weather[0].description,
               speed: data.list[28].wind.speed,
@@ -142,64 +149,93 @@ class App extends Component {
     });
   }
 
+  toCelsius(temp) {
+    const celsius = temp - 273;
+    const round = Math.floor(celsius);
+
+    return round.toString().concat("\xB0C");
+  }
+
   render() {
     return (
-      <div id="main">
-        <FormWeather onSubmit={this.getCurrentWeather} />
-        {this.state.city !== null ? (
-          <CurrentWeatherData
-            temperature={this.state.temperature}
-            city={this.state.city}
-            country={this.state.country}
-            humidity={this.state.humidity}
-            speed={this.state.speed}
-            description={this.state.description}
-            error={this.state.error}
-          />
-        ) : null}
-        <ForecastWeatherData
-          onClick={this.getForecastWeather}
-          forecast={this.state.forecast.map((item, index) =>
-            this.state.forecast.length !== 0 ? (
-              <div
-                key={index}
-                style={{
-                  color: "#ffffff",
-                  display: "inline",
-                  padding: "20px",
-                }}
-              >
-                <div style={{ border: "solid", marginRight: "5px" }}>
-                  <div>
-                    <span>Temperature: {item.temp}</span>
-                  </div>
-                  <div>
-                    <span>Humidity: {item.humidity}</span>
-                  </div>
-                  <div>
-                    <span>Condition: {item.condition}</span>
-                  </div>
-                  <div>
-                    <span>Speed: {item.speed}</span>
-                  </div>
-
-                  <div>
-                    <span>Date: {item.date}</span>
-                  </div>
-                </div>
+      <Container id="main">
+        <Row>
+          <Col xs={10} md={8} style={{ paddingLeft: "0", paddingRight: "0" }}>
+            <div>
+              <div className="temperature">
+                <span>{this.state.temperature}</span>
               </div>
-            ) : null
-          )}
-        />
-        <Button
-          variant="primary"
-          type="click"
-          style={{ margin: "5px" }}
-          onClick={this.reset}
-        >
-          Reset Weather
-        </Button>
-      </div>
+              <img
+                className="img-weather"
+                src={BackgroundWeather}
+                alt={BackgroundWeather}
+              />
+            </div>
+          </Col>
+          <Col xs={6} md={4}>
+            <div id="info-container">
+              <FormWeather onSubmit={this.getCurrentWeather} />
+              {this.state.city !== null ? (
+                <CurrentWeatherData
+                  temperature={this.state.temperature}
+                  city={this.state.city}
+                  country={this.state.country}
+                  humidity={this.state.humidity}
+                  speed={this.state.speed}
+                  description={this.state.description}
+                />
+              ) : (
+                this.state.error
+              )}
+
+              <ForecastWeatherData
+                onClick={this.getForecastWeather}
+                forecast={this.state.forecast.map((item, index) =>
+                  this.state.forecast.length !== 0 ? (
+                    <div
+                      className="forecast-data"
+                      key={index}
+                      style={{
+                        color: "#ffffff",
+                        padding: "10px",
+                        border: "solid",
+                      }}
+                    >
+                      <div>
+                        <span>Temperature: {item.temp}</span>
+                      </div>
+                      <div>
+                        <span>Humidity: {item.humidity}</span>
+                      </div>
+                      <div>
+                        <span>Condition: {item.condition}</span>
+                      </div>
+                      <div>
+                        <span>Speed: {item.speed}</span>
+                      </div>
+
+                      <div>
+                        <span>Date: {item.date}</span>
+                      </div>
+                    </div>
+                  ) : null
+                )}
+              />
+
+              <div>
+                <Button
+                  className="btn-reset-weather"
+                  variant="primary"
+                  type="click"
+                  onClick={this.reset}
+                >
+                  Reset Weather
+                </Button>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
