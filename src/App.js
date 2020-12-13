@@ -24,10 +24,11 @@ class App extends Component {
     selectedCity: null,
     city: null,
     country: null,
+    inputValue: "",
     description: null,
     forecast: [],
     humidity: null,
-    alert: false,
+    date: new Date(),
     speed: null,
     error: null,
   };
@@ -40,6 +41,8 @@ class App extends Component {
     this.reset = this.reset.bind(this);
     this.toCelsius = this.toCelsius.bind(this);
     this.backgroundWeather = this.backgroundWeather.bind(this);
+    this.add = this.add.bind(this);
+    this.updateInput = this.updateInput.bind(this);
   }
 
   backgroundWeather() {
@@ -83,6 +86,14 @@ class App extends Component {
     return round.toString().concat("\xB0C");
   }
 
+  add(element, addedText) {
+    return element.toString().concat(addedText);
+  }
+
+  updateInput(e) {
+    this.setState({ inputValue: e.target.value });
+  }
+
   getCurrentWeather(e) {
     e.preventDefault();
     this.setState({ selectedCity: e.target.city.value }, () => {
@@ -93,14 +104,16 @@ class App extends Component {
               temperature: this.toCelsius(data.main.temp),
               city: data.name,
               country: data.sys.country,
-              humidity: data.main.humidity,
+              humidity: this.add(data.main.humidity, "%"),
               description: data.weather[0].main,
               speed: data.wind.speed,
               error: null,
+              inputValue: "",
             },
             this.backgroundWeather
           );
         })
+
         .catch((error) => {
           this.setState({
             temperature: null,
@@ -127,35 +140,35 @@ class App extends Component {
           forecast: [
             {
               temp: this.toCelsius(data.list[0].main.temp),
-              humidity: data.list[0].main.humidity,
+              humidity: this.add(data.list[0].main.humidity, "%"),
               condition: data.list[0].weather[0].main,
               speed: data.list[0].wind.speed,
               date: formatDate(data.list[0].dt_txt),
             },
             {
-              temp: this.toCelsius(data.list[0].main.temp),
-              humidity: data.list[4].main.humidity,
+              temp: this.toCelsius(data.list[4].main.temp),
+              humidity: this.add(data.list[4].main.humidity, "%"),
               condition: data.list[4].weather[0].main,
               speed: data.list[4].wind.speed,
               date: formatDate(data.list[4].dt_txt),
             },
             {
-              temp: this.toCelsius(data.list[0].main.temp),
-              humidity: data.list[12].main.humidity,
+              temp: this.toCelsius(data.list[12].main.temp),
+              humidity: this.add(data.list[12].main.humidity, "%"),
               condition: data.list[12].weather[0].main,
               speed: data.list[12].wind.speed,
               date: formatDate(data.list[12].dt_txt),
             },
             {
-              temp: this.toCelsius(data.list[0].main.temp),
-              humidity: data.list[20].main.humidity,
+              temp: this.toCelsius(data.list[20].main.temp),
+              humidity: this.add(data.list[20].main.humidity, "%"),
               condition: data.list[20].weather[0].main,
               speed: data.list[20].wind.speed,
               date: formatDate(data.list[20].dt_txt),
             },
             {
-              temp: this.toCelsius(data.list[0].main.temp),
-              humidity: data.list[28].main.humidity,
+              temp: this.toCelsius(data.list[28].main.temp),
+              humidity: this.add(data.list[28].main.humidity, "%"),
               condition: data.list[28].weather[0].main,
               speed: data.list[28].wind.speed,
               date: formatDate(data.list[28].dt_txt),
@@ -192,9 +205,11 @@ class App extends Component {
         <Row>
           <Col xs={10} md={8} style={{ paddingLeft: "0", paddingRight: "0" }}>
             <div>
-              <div className="temperature">
-                <span>{this.state.temperature}</span>
+              <div className="weather-info">
+                <span className="temperature">{this.state.temperature}</span>
+                <span className="location">{this.state.city}</span>
               </div>
+
               <img
                 className="img-weather"
                 src={this.state.backgroundWeather}
@@ -203,64 +218,64 @@ class App extends Component {
             </div>
           </Col>
           <Col xs={6} md={4}>
-            <div id="info-container">
-              <FormWeather onSubmit={this.getCurrentWeather} />
-              {this.state.city !== null ? (
-                <CurrentWeatherData
-                  temperature={this.state.temperature}
-                  city={this.state.city}
-                  country={this.state.country}
-                  humidity={this.state.humidity}
-                  speed={this.state.speed}
-                  description={this.state.description}
+            <div id="background-weather">
+              <div className="blur-background-weather">
+                <FormWeather
+                  onSubmit={this.getCurrentWeather}
+                  inputValue={this.state.inputValue}
+                  onChange={this.updateInput}
                 />
-              ) : (
-                this.state.error
-              )}
-
-              <ForecastWeatherData
-                onClick={this.getForecastWeather}
-                forecast={this.state.forecast.map((item, index) =>
-                  this.state.forecast.length !== 0 ? (
-                    <div
-                      className="forecast-data"
-                      key={index}
-                      style={{
-                        color: "#ffffff",
-                        padding: "10px",
-                        border: "solid",
-                      }}
-                    >
-                      <div>
-                        <span>Temperature: {item.temp}</span>
-                      </div>
-                      <div>
-                        <span>Humidity: {item.humidity}</span>
-                      </div>
-                      <div>
-                        <span>Condition: {item.condition}</span>
-                      </div>
-                      <div>
-                        <span>Speed: {item.speed}</span>
-                      </div>
-
-                      <div>
-                        <span>Date: {item.date}</span>
-                      </div>
-                    </div>
-                  ) : null
+                {this.state.city !== null ? (
+                  <CurrentWeatherData
+                    temperature={this.state.temperature}
+                    city={this.state.city}
+                    country={this.state.country}
+                    humidity={this.state.humidity}
+                    speed={this.state.speed}
+                    description={this.state.description}
+                  />
+                ) : (
+                  <div>
+                    <CurrentWeatherData error={this.state.error} />
+                  </div>
                 )}
-              />
 
-              <div>
-                <Button
-                  className="btn-reset-weather"
-                  variant="primary"
-                  type="click"
-                  onClick={this.reset}
-                >
-                  Reset Weather
-                </Button>
+                <ForecastWeatherData
+                  onClick={this.getForecastWeather}
+                  forecast={this.state.forecast.map((item, index) =>
+                    this.state.forecast.length !== 0 ? (
+                      <div className="forecast-data" key={index}>
+                        <div>
+                          <span>Temperature {item.temp}</span>
+                        </div>
+                        <div>
+                          <span>Humidity {item.humidity}</span>
+                        </div>
+                        <div>
+                          <span>Condition {item.condition}</span>
+                        </div>
+                        <div>
+                          <span>Speed {item.speed}</span>
+                        </div>
+
+                        <div>
+                          <span>Date {item.date}</span>
+                        </div>
+                      </div>
+                    ) : null
+                  )}
+                />
+
+                <div>
+                  <Button
+                    className="btn-reset-weather"
+                    variant="primary"
+                    type="click"
+                    onClick={this.reset}
+                  >
+                    Reset Weather
+                  </Button>
+                </div>
               </div>
             </div>
           </Col>
