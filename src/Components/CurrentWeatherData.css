@@ -4,14 +4,14 @@
   margin-top: 10px;
 }
 
-.leftside-info {
+.leftside-current-weather {
   display: block;
   text-align: left;
   width: 100%;
   margin-left: 10px;
 }
 
-.rightside-info {
+.rightside-current-weather{
   display: block;
   text-align: right;
   width: 100%;

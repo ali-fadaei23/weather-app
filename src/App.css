@@ -136,21 +136,25 @@ body {
 }
 
 .forecast-data {
+  color: #ffffff;
+  display: flex;
+  margin-top: 10px;
 }
 
-.forecast-container {
-  overflow-y: scroll;
-  overflow-x: hidden;
+.leftside-forecast-weather {
+  display: block;
+  text-align: left;
+  width: 100%;
+  margin-left: 10px;
+}
+.rightside-forecast-weather {
+  display: block;
+  text-align: right;
+  width: 100%;
+  margin-right: 10px;
 }
 
 .btn-reset-weather {
 }
 
-.forecast-container::-webkit-scrollbar {
-}
 
-.forecast-container::-webkit-scrollbar-track {
-}
-
-.forecast-container::-webkit-scrollbar-thumb {
-}

@@ -38,16 +38,11 @@
 }
 
 .btn-get-weather {
-  background: transparent;
-  border-radius: 0;
-  border-radius: 1px;
-  border-color: #ffffff;
+
 }
 
 .btn-get-weather:hover {
-  border-color: #80bdff;
-  background-color: transparent;
-  color: #80bdff;
+ 
 }
 
 .btn-get-weather:focus {

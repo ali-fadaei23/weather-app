@@ -5,4 +5,15 @@
 }
 
 .forecast-info {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.forecast-container::-webkit-scrollbar {
+}
+
+.forecast-container::-webkit-scrollbar-track {
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
 }

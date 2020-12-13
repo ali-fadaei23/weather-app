@@ -3,7 +3,7 @@ import "./CurrentWeatherData.css";
 
 const WeatherData = (props) => (
   <div id="main-weather-data">
-    <div className="leftside-info">
+    <div className="leftside-current-weather">
       <div>{props.temperature && <span> Temperature </span>}</div>
       <div>{props.city && props.country && <span> Location</span>}</div>
       <div>{props.humidity && <span> Humidity </span>}</div>
@@ -11,7 +11,7 @@ const WeatherData = (props) => (
       <div>{props.speed && <span> Speed </span>}</div>
       <div>{props.error && <span> Error </span>}</div>
     </div>
-    <div className="rightside-info">
+    <div className="rightside-current-weather">
       <div>{props.temperature && <span>{props.temperature}</span>}</div>
       <div>
         {props.city && props.country && (

@@ -249,22 +249,40 @@ class App extends Component {
                   onClick={this.getForecastWeather}
                   forecast={this.state.forecast.map((item, index) =>
                     this.state.forecast.length !== 0 ? (
-                      <div className="forecast-data" key={index}>
-                        <div>
-                          <span>Temperature {item.temp}</span>
+                      <div className="forecast-data" key={index} >
+                        <div className="leftside-forecast-weather">
+                          <div>
+                            <span>Temperature </span>
+                          </div>
+                          <div>
+                            <span>Humidity </span>
+                          </div>
+                          <div>
+                            <span>Condition </span>
+                          </div>
+                          <div>
+                            <span>Speed </span>
+                          </div>
+                          <div>
+                            <span>Date </span>
+                          </div>
                         </div>
-                        <div>
-                          <span>Humidity {item.humidity}</span>
-                        </div>
-                        <div>
-                          <span>Condition {item.condition}</span>
-                        </div>
-                        <div>
-                          <span>Speed {item.speed}</span>
-                        </div>
-
-                        <div>
-                          <span>Date {item.date}</span>
+                        <div className="rightside-forecast-weather">
+                          <div>
+                            <span>{item.temp}</span>
+                          </div>
+                          <div>
+                            <span>{item.humidity}</span>
+                          </div>
+                          <div>
+                            <span>{item.condition}</span>
+                          </div>
+                          <div>
+                            <span>{item.speed}</span>
+                          </div>
+                          <div>
+                            <span>{item.date}</span>
+                          </div>
                         </div>
                       </div>
                     ) : null
@@ -282,6 +300,7 @@ class App extends Component {
                   </Button>
                 </div>
               </div>
+              <div></div>
             </div>
           </Col>
         </Row>
