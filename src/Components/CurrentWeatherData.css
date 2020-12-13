@@ -1,7 +1,19 @@
 #main-weather-data {
   color: #ffffff;
-  border: solid;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.leftside-info {
+  display: block;
+  text-align: left;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.rightside-info {
+  display: block;
+  text-align: right;
+  width: 100%;
+  margin-right: 10px;
 }

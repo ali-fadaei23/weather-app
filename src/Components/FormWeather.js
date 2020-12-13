@@ -4,16 +4,19 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const FormWeather = (props) => (
-  <Form id="form" onSubmit={props.onSubmit}>
+  <Form id="form" onSubmit={props.onSubmit} >
     <div className="form-weather">
       <Form.Control
         className="input-location"
         type="text"
-        placeholder="City...."
+        placeholder="Location . . ."
         name="city"
+        value={props.inputValue}
+        onChange={props.onChange}
       />
-
-      <Button className="btn-get-weather btn-primary" type="submit">
+    </div>
+    <div className="btn-weather">
+      <Button className="btn-get-weather" type="submit">
         Get Weather
       </Button>
     </div>

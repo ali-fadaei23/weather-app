@@ -1,6 +1,6 @@
 import React from "react";
 import "./ForecastWeatherData.css";
-import { Tab, Col, Row, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const WeatherForecastData = (props) => (
   <div id="forecast-container">

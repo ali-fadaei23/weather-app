@@ -1,40 +1,54 @@
 #form {
   display: flex;
-  justify-content: center;
-}
-
-.input-location {
-  width: 100%;
-  margin-right: 0.15rem;
-  border: 3px solid #184aa3;
-  border-right: none;
-  border-radius: 1px;
-}
-
-.input-location:focus {
-  box-shadow: transparent;
-  outline: 0;
-  border-color: none;
+  place-content: center;
+  justify-content: space-around;
+  margin-top: 2%;
 }
 
 .form-weather {
-  display: flex;
-  align-items: center;
-  padding: 5px;
+  display: inline;
+  float: left;
+}
+
+.input-location {
+  background: transparent;
+  border-radius: 1px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  font-family: "Baloo Tammudu 2", cursive;
+}
+
+.input-location:hover {
+  border-bottom-color: #80bdff;
+}
+
+.input-location:focus {
+  box-shadow: inset 0 0 0px 0;
+  background: transparent;
+  border-radius: 1px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.btn-weather {
+  display: inline;
+  float: right;
 }
 
 .btn-get-weather {
-  position: absolute;
-  top: 1%;
-  left: 50%;
-  border: 1px solid #184aa3;
-  background: #184aa3;
+  background: transparent;
+  border-radius: 0;
   border-radius: 1px;
-  border-left: none;
+  border-color: #ffffff;
+}
+
+.btn-get-weather:hover {
+  border-color: #80bdff;
+  background-color: transparent;
+  color: #80bdff;
 }
 
 .btn-get-weather:focus {
-  box-shadow: transparent;
-  outline: 0;
-  border-color: none;
 }
