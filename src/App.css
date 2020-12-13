@@ -1,4 +1,38 @@
+/* ############### Fonts ############### */
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
+/* font-family: "Cinzel", serif; */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap");
+/* font-family: "Open Sans Condensed", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap");
+/* font-family: 'Baloo Tammudu 2', cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Lancelot&display=swap");
+/* font-family: 'Lancelot', cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300&display=swap");
+/* font-family: 'Sulphur Point', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap");
+/* font-family: 'Lato', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+/* font-family: 'Oswald', sans-serif; */
+
 /* ############### Default Style ############### */
+
+* {
+  font-family: "Sulphur Point", sans-serif;
+}
+
+.btn {
+  background: transparent;
+  border-radius: 0;
+  border-radius: 1px;
+  border-color: #ffffff;
+}
+
+.btn:hover {
+  border-color: #80bdff;
+  background-color: transparent;
+  color: #80bdff;
+}
 
 html,
 body {
@@ -7,8 +41,8 @@ body {
 }
 
 body {
-  background-image: url(Asset/Background/Background-5.jpg);
-  backdrop-filter: blur(6px);
+  background-image: url(Asset/Background/Background-6.jpg);
+  backdrop-filter: blur(10px);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -16,14 +50,13 @@ body {
 /* ############### App Style ############### */
 
 #main {
-  margin: 0 auto;
   filter: drop-shadow(3px 4px 9px #000000);
-  border: 3px solid #184aa3;
+  /* border: 3px solid #184aa3; */
   text-align: center;
 }
 
-#info-container {
-  background-image: url(Asset/Background/Background-1.jpg);
+#background-weather {
+  background-image: url(Asset/Background/background-weather.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -34,14 +67,34 @@ body {
   z-index: 1;
 }
 
-.weather {
-  backdrop-filter: blur(5px);
+.blur-background-weather {
+  backdrop-filter: blur(10px);
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   z-index: 1;
+}
+
+.weather-info {
+  display: inline-block;
+  position: absolute;
+  top: 55%;
+  left: 0;
+  right: 50%;
+  bottom: 0;
+  color: #ffffff;
+}
+
+.temperature {
+  font-size: 100px;
+  margin-right: 5px;
+}
+
+.location {
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
 }
 
 .img-weather {
@@ -57,9 +110,6 @@ body {
 }
 
 .btn-reset-weather {
-  border: 1px solid #184aa3;
-  background: #184aa3;
-  border-radius: 1px;
 }
 
 .forecast-container::-webkit-scrollbar {
