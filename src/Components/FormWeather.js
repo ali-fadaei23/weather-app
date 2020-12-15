@@ -16,7 +16,7 @@ const FormWeather = (props) => (
       />
     </div>
     <div className="btn-weather">
-      <Button className="btn-get-weather" type="submit">
+      <Button className="btn-get-weather" type="submit" onClick={props.reset}>
         Get Weather
       </Button>
     </div>

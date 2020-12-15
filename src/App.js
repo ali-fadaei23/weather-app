@@ -226,6 +226,7 @@ class App extends Component {
             <div id="background-weather">
               <div className="blur-background-weather">
                 <FormWeather
+                  reset={this.reset}
                   onSubmit={this.getCurrentWeather}
                   inputValue={this.state.inputValue}
                   onChange={this.updateInput}
@@ -249,7 +250,7 @@ class App extends Component {
                   onClick={this.getForecastWeather}
                   forecast={this.state.forecast.map((item, index) =>
                     this.state.forecast.length !== 0 ? (
-                      <div className="forecast-data" key={index} >
+                      <div className="forecast-data" key={index}>
                         <div className="leftside-forecast-weather">
                           <div>
                             <span>Temperature </span>
@@ -288,17 +289,6 @@ class App extends Component {
                     ) : null
                   )}
                 />
-
-                <div>
-                  <Button
-                    className="btn-reset-weather"
-                    variant="primary"
-                    type="click"
-                    onClick={this.reset}
-                  >
-                    Reset Weather
-                  </Button>
-                </div>
               </div>
               <div></div>
             </div>
