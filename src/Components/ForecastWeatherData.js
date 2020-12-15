@@ -10,7 +10,9 @@ const WeatherForecastData = (props) => (
       </Button>
     </div>
     <div className="forecast-info">
-      <div className="forecast-detail">{props.forecast}</div>
+      <div className="forecast-detail">
+        <div>{props.forecast}</div>
+      </div>
     </div>
   </div>
 );

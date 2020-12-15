@@ -1,19 +1,31 @@
-#forecast-container {
-}
-
-.btn-forecast-weather {
-}
-
 .forecast-info {
-  overflow-y: scroll;
+  display: flex;
+}
+
+.forecast-detail {
+  flex: 1;
+  height: 19.5rem;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
-.forecast-container::-webkit-scrollbar {
+.forecast-detail::-webkit-scrollbar {
+  width: 1.1rem;
 }
 
-.forecast-container::-webkit-scrollbar-track {
+.forecast-detail::-webkit-scrollbar-track {
+  padding: 0;
+  margin-bottom: 1px;
+  background: transparent;
+  border-radius: 1px;
 }
 
-.forecast-container::-webkit-scrollbar-thumb {
+.forecast-detail::-webkit-scrollbar-thumb {
+  border: 1px solid transparent;
+  border-radius: 0;
+  border-color: #ffffff;
+}
+
+.forecast-detail::-webkit-scrollbar-thumb:hover {
+  background: #142a2f;
 }
