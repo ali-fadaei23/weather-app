@@ -8,7 +8,6 @@ import BackgroundSnowySky from "./Asset/Snowy/snowy-1.jpg";
 import BackgroundRainySky from "./Asset/Rainy/rainy-1.jpg";
 import BackgroundDrizzleSky from "./Asset/Drizzle/drizzle.jpg";
 import BackgroundDefault from "./Asset/default.jpg";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
