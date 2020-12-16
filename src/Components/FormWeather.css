@@ -17,6 +17,7 @@
   border-right: 0;
   border-top: 0;
   font-family: "Baloo Tammudu 2", cursive;
+  transition: all 0.3s ease 0.1s;
 }
 
 .input-location:hover {
@@ -37,13 +38,4 @@
   float: right;
 }
 
-.btn-get-weather {
 
-}
-
-.btn-get-weather:hover {
- 
-}
-
-.btn-get-weather:focus {
-}

@@ -23,9 +23,10 @@
 .forecast-detail::-webkit-scrollbar-thumb {
   border: 1px solid transparent;
   border-radius: 0;
+  background: transparent;
   border-color: #ffffff;
 }
 
 .forecast-detail::-webkit-scrollbar-thumb:hover {
-  background: #142a2f;
+  border-color: #80bdff;
 }

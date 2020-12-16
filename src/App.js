@@ -105,7 +105,7 @@ class App extends Component {
               country: data.sys.country,
               humidity: this.add(data.main.humidity, "%"),
               description: data.weather[0].main,
-              speed: this.add(data.wind.speed, " m"),
+              speed: this.add(data.wind.speed, " mi/h"),
               error: null,
               date: new Date().toLocaleString(),
               inputValue: "",
@@ -142,35 +142,35 @@ class App extends Component {
               temp: this.toCelsius(data.list[0].main.temp),
               humidity: this.add(data.list[0].main.humidity, "%"),
               condition: data.list[0].weather[0].main,
-              speed: this.add(data.list[0].wind.speed, " m"),
+              speed: this.add(data.list[0].wind.speed, " mi/h"),
               date: formatDate(data.list[0].dt_txt),
             },
             {
               temp: this.toCelsius(data.list[4].main.temp),
               humidity: this.add(data.list[4].main.humidity, "%"),
               condition: data.list[4].weather[0].main,
-              speed: this.add(data.list[4].wind.speed, " m"),
+              speed: this.add(data.list[4].wind.speed, " mi/h"),
               date: formatDate(data.list[4].dt_txt),
             },
             {
               temp: this.toCelsius(data.list[12].main.temp),
               humidity: this.add(data.list[12].main.humidity, "%"),
               condition: data.list[12].weather[0].main,
-              speed: this.add(data.list[12].wind.speed, " m"),
+              speed: this.add(data.list[12].wind.speed, " mi/h"),
               date: formatDate(data.list[12].dt_txt),
             },
             {
               temp: this.toCelsius(data.list[20].main.temp),
               humidity: this.add(data.list[20].main.humidity, "%"),
               condition: data.list[20].weather[0].main,
-              speed: this.add(data.list[20].wind.speed, " m"),
+              speed: this.add(data.list[20].wind.speed, " mi/h"),
               date: formatDate(data.list[20].dt_txt),
             },
             {
               temp: this.toCelsius(data.list[28].main.temp),
               humidity: this.add(data.list[28].main.humidity, "%"),
               condition: data.list[28].weather[0].main,
-              speed: this.add(data.list[28].wind.speed, " m"),
+              speed: this.add(data.list[28].wind.speed, " mi/h"),
               date: formatDate(data.list[28].dt_txt),
             },
           ],
@@ -203,9 +203,8 @@ class App extends Component {
     return (
       <Container id="main">
         <Row>
-          <Col xs={10} md={8} style={{ paddingLeft: "0", paddingRight: "0" }}>
+          <Col style={{ paddingLeft: "0", paddingRight: "0" }}>
             <div>
-              <div></div>
               <div className="weather-info">
                 <span className="temperature">{this.state.temperature}</span>
                 <div>
@@ -213,7 +212,6 @@ class App extends Component {
                   <span className="location">{this.state.city}</span>
                 </div>
               </div>
-
               <img
                 className="img-weather"
                 src={this.state.backgroundWeather}
