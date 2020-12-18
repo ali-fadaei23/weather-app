@@ -18,6 +18,7 @@ import ForecastWeatherData from "./Components/ForecastWeatherData";
 
 class App extends Component {
   state = {
+    visible: false,
     backgroundWeather: BackgroundDefault,
     temperature: null,
     selectedCity: null,
@@ -109,6 +110,7 @@ class App extends Component {
               error: null,
               date: new Date().toLocaleString(),
               inputValue: "",
+              visible: true,
             },
             this.backgroundWeather
           );
@@ -244,6 +246,7 @@ class App extends Component {
                 )}
 
                 <ForecastWeatherData
+                  isVisible={this.state.visible}
                   onClick={this.getForecastWeather}
                   forecast={this.state.forecast.map((item, index) =>
                     this.state.forecast.length !== 0 ? (

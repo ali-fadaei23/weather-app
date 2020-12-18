@@ -5,7 +5,13 @@ import { Button } from "react-bootstrap";
 const WeatherForecastData = (props) => (
   <div id="forecast-container">
     <div>
-      <Button className="btn-forecast-weather" onClick={props.onClick}>
+      <Button
+        className="btn-forecast-weather"
+        onClick={props.onClick}
+        style={{
+          display: props.isVisible ? "" : "none",
+        }}
+      >
         Forecast 5 Days
       </Button>
     </div>
