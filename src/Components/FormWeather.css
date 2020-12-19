@@ -1,41 +1,65 @@
-#form {
-  display: flex;
-  place-content: center;
-  justify-content: space-around;
-  margin-top: 2%;
+/* ############## Responsive App ############## */
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
 }
 
-.form-weather {
-  display: inline;
-  float: left;
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
 }
 
-.input-location {
-  background: transparent;
-  border-radius: 1px;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  font-family: "Baloo Tammudu 2", cursive;
-  transition: all 0.3s ease 0.1s;
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
 }
 
-.input-location:hover {
-  border-bottom-color: #80bdff;
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+  #form {
+    display: flex;
+    place-content: center;
+    justify-content: space-around;
+    margin-top: 2%;
+  }
+
+  .form-weather {
+    display: inline;
+    float: left;
+  }
+
+  .img-weather {
+    transition: all 0.3s ease 0.1s;
+  }
+
+  .input-location {
+    background: transparent;
+    border-radius: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-family: "Baloo Tammudu 2", cursive;
+    transition: all 0.3s ease 0.1s;
+    padding-right: 0;
+  }
+
+  .input-location:hover {
+    border-bottom-color: #80bdff;
+  }
+
+  .input-location:focus {
+    box-shadow: inset 0 0 0px 0;
+    background: transparent;
+    border-radius: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+  }
+
+  .btn-weather {
+    display: inline;
+    float: right;
+  }
 }
-
-.input-location:focus {
-  box-shadow: inset 0 0 0px 0;
-  background: transparent;
-  border-radius: 1px;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-}
-
-.btn-weather {
-  display: inline;
-  float: right;
-}
-
-

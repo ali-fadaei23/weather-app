@@ -205,90 +205,90 @@ class App extends Component {
     return (
       <Container id="main">
         <Row>
-          <Col style={{ paddingLeft: "0", paddingRight: "0" }}>
-            <div>
-              <div className="weather-info">
-                <span className="temperature">{this.state.temperature}</span>
-                <div>
-                  <span className="date">{this.state.date}</span>
-                  <span className="location">{this.state.city}</span>
-                </div>
+          <Col lg={8} style={{ paddingLeft: "0", paddingRight: "0" }}>
+            <Col className="weather-info">
+              <span className="temperature">{this.state.temperature}</span>
+              <div>
+                <span className="date">{this.state.date}</span>
+                <span className="location">{this.state.city}</span>
               </div>
-              <img
-                className="img-weather"
-                src={this.state.backgroundWeather}
-                alt={""}
-              />
-            </div>
+            </Col>
+            <img
+              className="img-weather"
+              src={this.state.backgroundWeather}
+              alt={""}
+            />
           </Col>
-          <Col xs={6} md={4}>
+          <Col lg={4}>
             <div id="background-weather">
               <div className="blur-background-weather">
-                <FormWeather
-                  reset={this.reset}
-                  onSubmit={this.getCurrentWeather}
-                  inputValue={this.state.inputValue}
-                  onChange={this.updateInput}
-                />
-                {this.state.city !== null ? (
-                  <CurrentWeatherData
-                    temperature={this.state.temperature}
-                    city={this.state.city}
-                    country={this.state.country}
-                    humidity={this.state.humidity}
-                    speed={this.state.speed}
-                    description={this.state.description}
+                <div>
+                  <FormWeather
+                    reset={this.reset}
+                    onSubmit={this.getCurrentWeather}
+                    inputValue={this.state.inputValue}
+                    onChange={this.updateInput}
                   />
-                ) : (
-                  <div>
-                    <CurrentWeatherData error={this.state.error} />
-                  </div>
-                )}
-
-                <ForecastWeatherData
-                  isVisible={this.state.visible}
-                  onClick={this.getForecastWeather}
-                  forecast={this.state.forecast.map((item, index) =>
-                    this.state.forecast.length !== 0 ? (
-                      <div className="forecast-data" key={index}>
-                        <div className="leftside-forecast-weather">
-                          <div>
-                            <span>Temperature </span>
-                          </div>
-                          <div>
-                            <span>Humidity </span>
-                          </div>
-                          <div>
-                            <span>Condition </span>
-                          </div>
-                          <div>
-                            <span>Speed </span>
-                          </div>
-                          <div>
-                            <span>Date </span>
-                          </div>
-                        </div>
-                        <div className="rightside-forecast-weather">
-                          <div>
-                            <span>{item.temp}</span>
-                          </div>
-                          <div>
-                            <span>{item.humidity}</span>
-                          </div>
-                          <div>
-                            <span>{item.condition}</span>
-                          </div>
-                          <div>
-                            <span>{item.speed}</span>
-                          </div>
-                          <div>
-                            <span>{item.date}</span>
-                          </div>
-                        </div>
-                      </div>
-                    ) : null
+                  {this.state.city !== null ? (
+                    <CurrentWeatherData
+                      temperature={this.state.temperature}
+                      city={this.state.city}
+                      country={this.state.country}
+                      humidity={this.state.humidity}
+                      speed={this.state.speed}
+                      description={this.state.description}
+                    />
+                  ) : (
+                    <div>
+                      <CurrentWeatherData error={this.state.error} />
+                    </div>
                   )}
-                />
+
+                  <ForecastWeatherData
+                    isVisible={this.state.visible}
+                    onClick={this.getForecastWeather}
+                    forecast={this.state.forecast.map((item, index) =>
+                      this.state.forecast.length !== 0 ? (
+                        <div className="forecast-data" key={index}>
+                          <div className="leftside-forecast-weather">
+                            <div>
+                              <span>Temperature </span>
+                            </div>
+                            <div>
+                              <span>Humidity </span>
+                            </div>
+                            <div>
+                              <span>Condition </span>
+                            </div>
+                            <div>
+                              <span>Speed </span>
+                            </div>
+                            <div>
+                              <span>Date </span>
+                            </div>
+                          </div>
+                          <div className="rightside-forecast-weather">
+                            <div>
+                              <span>{item.temp}</span>
+                            </div>
+                            <div>
+                              <span>{item.humidity}</span>
+                            </div>
+                            <div>
+                              <span>{item.condition}</span>
+                            </div>
+                            <div>
+                              <span>{item.speed}</span>
+                            </div>
+                            <div>
+                              <span>{item.date}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null
+                    )}
+                  />
+                </div>
               </div>
               <div></div>
             </div>
