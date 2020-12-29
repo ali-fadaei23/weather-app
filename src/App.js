@@ -3,11 +3,17 @@ import React, { Component } from "react";
 import "./App.css";
 import BackgroundClearSky from "./Asset/ClearSky/clear-sky-1.jpg";
 import BackgroundHazeySky from "./Asset/Haze/haze.jpg";
-import BackgroundCloudySky from "./Asset/Cloudy/cloudy-2.jpg";
+import BackgroundCloudySky from "./Asset/Cloudy/cloudy-1.jpg";
 import BackgroundSnowySky from "./Asset/Snowy/snowy-1.jpg";
 import BackgroundRainySky from "./Asset/Rainy/rainy-1.jpg";
 import BackgroundDrizzleSky from "./Asset/Drizzle/drizzle.jpg";
 import BackgroundDefault from "./Asset/default.jpg";
+import ClearIcon from "./Asset/Icons/clear.png";
+import CloudyIcon from "./Asset/Icons/cloudy.png";
+import RainyIcon from "./Asset/Icons/rainy.png";
+import MistIcon from "./Asset/Icons/mist.png";
+import SnowyIcon from "./Asset/Icons/snowy.png";
+import DrizzleIcon from "./Asset/Icons/drizzle.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,7 +25,9 @@ import ForecastWeatherData from "./Components/ForecastWeatherData";
 class App extends Component {
   state = {
     visible: false,
+    animation: false,
     backgroundWeather: BackgroundDefault,
+    icon: null,
     temperature: null,
     selectedCity: null,
     city: null,
@@ -40,35 +48,81 @@ class App extends Component {
     this.getForecastWeather = this.getForecastWeather.bind(this);
     this.reset = this.reset.bind(this);
     this.toCelsius = this.toCelsius.bind(this);
-    this.backgroundWeather = this.backgroundWeather.bind(this);
     this.add = this.add.bind(this);
     this.updateInput = this.updateInput.bind(this);
+    this.styleWeather = this.styleWeather.bind(this);
   }
 
-  backgroundWeather() {
+  styleWeather() {
+    this.backgroundWeatherUpdate();
+    this.iconWeatherUpdate();
+  }
+
+  iconWeatherUpdate() {
     if (
       this.state.description === "Haze" ||
       this.state.description === "Fog" ||
       this.state.description === "Mist" ||
       this.state.description === "Smoke"
     ) {
-      this.setState({ ...this.state, backgroundWeather: BackgroundHazeySky });
+      this.setState((prevState) => ({ ...prevState, icon: MistIcon }));
     } else if (this.state.description === "Snow") {
-      this.setState({ ...this.state, backgroundWeather: BackgroundSnowySky });
+      this.setState((prevState) => ({ ...prevState, icon: SnowyIcon }));
     } else if (this.state.description === "Rain") {
-      this.setState({ ...this.state, backgroundWeather: BackgroundRainySky });
+      this.setState((prevState) => ({ ...prevState, icon: RainyIcon }));
     } else if (this.state.description === "Clouds") {
-      this.setState({ ...this.state, backgroundWeather: BackgroundCloudySky });
+      this.setState((prevState) => ({ ...prevState, icon: CloudyIcon }));
     } else if (this.state.description === "Drizzle") {
-      this.setState({ ...this.state, backgroundWeather: BackgroundDrizzleSky });
+      this.setState((prevState) => ({ ...prevState, icon: DrizzleIcon }));
     } else {
-      this.setState({ ...this.state, backgroundWeather: BackgroundClearSky });
+      this.setState((prevState) => ({ ...prevState, icon: ClearIcon }));
+    }
+  }
+
+  backgroundWeatherUpdate() {
+    if (
+      this.state.description === "Haze" ||
+      this.state.description === "Fog" ||
+      this.state.description === "Mist" ||
+      this.state.description === "Smoke"
+    ) {
+      this.setState((prevState) => ({
+        ...prevState,
+        backgroundWeather: BackgroundHazeySky,
+      }));
+    } else if (this.state.description === "Snow") {
+      this.setState((prevState) => ({
+        ...prevState,
+        backgroundWeather: BackgroundSnowySky,
+      }));
+    } else if (this.state.description === "Rain") {
+      this.setState((prevState) => ({
+        ...prevState,
+        backgroundWeather: BackgroundRainySky,
+      }));
+    } else if (this.state.description === "Clouds") {
+      this.setState((prevState) => ({
+        ...prevState,
+        backgroundWeather: BackgroundCloudySky,
+      }));
+    } else if (this.state.description === "Drizzle") {
+      this.setState((prevState) => ({
+        ...prevState,
+        backgroundWeather: BackgroundDrizzleSky,
+      }));
+    } else {
+      this.setState((prevState) => ({
+        ...prevState,
+        backgroundWeather: BackgroundClearSky,
+      }));
     }
   }
 
   reset() {
     this.setState({
       temperature: null,
+      backgroundWeather: BackgroundDefault,
+      icon: null,
       selectedCity: null,
       city: null,
       country: null,
@@ -111,8 +165,9 @@ class App extends Component {
               date: new Date().toLocaleString(),
               inputValue: "",
               visible: true,
+              animation: true,
             },
-            this.backgroundWeather
+            this.styleWeather
           );
         })
 
@@ -205,16 +260,43 @@ class App extends Component {
     return (
       <Container id="main">
         <Row>
-          <Col lg={8} style={{ paddingLeft: "0", paddingRight: "0" }}>
+          <Col lg={8} md={4} style={{ paddingLeft: "0", paddingRight: "0" }}>
             <Col className="weather-info">
-              <span className="temperature">{this.state.temperature}</span>
+              <span
+                className="temperature"
+                style={{
+                  animation: this.state.temperature
+                    ? "Weather 3s ease 0s forwards"
+                    : "",
+                }}
+              >
+                {this.state.temperature}
+              </span>
               <div>
                 <span className="date">{this.state.date}</span>
+
                 <span className="location">{this.state.city}</span>
               </div>
+              {this.state.icon && (
+                <img
+                  className="icon-weather"
+                  style={{
+                    animation: this.state.icon
+                      ? "backgroundWeather 3s ease 0s forwards"
+                      : "",
+                  }}
+                  src={this.state.icon}
+                  alt={""}
+                />
+              )}
             </Col>
             <img
               className="img-weather"
+              style={{
+                animation: this.state.temperature
+                  ? "backgroundWeather 3s ease -1s forwards"
+                  : "",
+              }}
               src={this.state.backgroundWeather}
               alt={""}
             />

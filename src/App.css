@@ -1,19 +1,14 @@
 /* ############### Fonts ############### */
-@import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
-/* font-family: "Cinzel", serif; */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap");
-/* font-family: "Open Sans Condensed", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap");
 /* font-family: 'Baloo Tammudu 2', cursive; */
-@import url("https://fonts.googleapis.com/css2?family=Lancelot&display=swap");
-/* font-family: 'Lancelot', cursive; */
 @import url("https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300&display=swap");
 /* font-family: 'Sulphur Point', sans-serif; */
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap");
-/* font-family: 'Lato', sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap");
 /* font-family: 'Dosis', sans-serif; */
-
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+/* font-family: 'Bebas Neue', cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+/* font-family: 'Righteous', cursive; */
 /* ############### Default Style ############### */
 * {
   font-family: "Sulphur Point", sans-serif;
@@ -63,21 +58,6 @@ body {
 .col-12 {
   width: 100%;
 } */
-
-/* Extra small devices (phones, 600px and down) */
-
-@media only screen and (max-width: 600px) {
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-
-@media only screen and (min-width: 600px) {
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-
-@media only screen and (min-width: 768px) {
-}
 
 /* Large devices (laptops/desktops, 992px and up) */
 
@@ -172,11 +152,23 @@ body {
     bottom: 20%;
     color: #ffffff;
     margin-left: 5rem;
+    z-index: 1;
   }
 
   .temperature {
     font-size: 100px;
     margin-right: 5px;
+  }
+
+  @keyframes Weather {
+    from {
+      transform: translate(-50%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(0);
+      opacity: 1;
+    }
   }
 
   .date {
@@ -185,17 +177,46 @@ body {
     color: #000000;
     mix-blend-mode: screen;
     padding: 0 10px;
-    font-family: "Dosis", sans-serif;
+    font-family: "Righteous", cursive;
   }
 
   .location {
     display: flex;
     color: #ffffff;
-    font-family: "Dosis", sans-serif;
+    font-family: "Righteous", cursive;
+  }
+
+  .icon-weather {
+    filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%)
+      contrast(80%);
+    position: absolute;
+    top: 95%;
+    left: 73%;
+    right: 0;
+    bottom: 0;
+    width: 120px;
+    height: 120px;
+  }
+
+  @keyframes iconWeather {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 
   .img-weather {
     width: 100%;
+  }
+  @keyframes backgroundWeather {
+    from {
+      transform: translate(0, -80%);
+    }
+    to {
+      transform: translate(0, 0);
+    }
   }
 
   .forecast-data {
@@ -216,4 +237,19 @@ body {
     width: 100%;
     margin-right: 10px;
   }
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
 }
