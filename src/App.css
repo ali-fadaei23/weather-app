@@ -121,7 +121,7 @@ body {
   }
 
   #background-weather {
-    background-image: url(Asset/Background/background-weather.jpg);
+    background-image: url(Asset/Background/background-weather-4.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
@@ -153,6 +153,7 @@ body {
     color: #ffffff;
     margin-left: 5rem;
     z-index: 1;
+    mix-blend-mode: screen;
   }
 
   .temperature {
@@ -212,7 +213,7 @@ body {
   }
   @keyframes backgroundWeather {
     from {
-      transform: translate(0, -80%);
+      transform: translate(0, -100%);
     }
     to {
       transform: translate(0, 0);

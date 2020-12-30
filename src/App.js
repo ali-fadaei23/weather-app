@@ -1,14 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import "./App.css";
-import BackgroundClearSky from "./Asset/ClearSky/clear-sky-1.jpg";
+import BackgroundClearSky from "./Asset/ClearSky/clear-sky-3.jpg";
 import BackgroundHazeySky from "./Asset/Haze/haze.jpg";
 import BackgroundCloudySky from "./Asset/Cloudy/cloudy-1.jpg";
 import BackgroundSnowySky from "./Asset/Snowy/snowy-1.jpg";
 import BackgroundRainySky from "./Asset/Rainy/rainy-1.jpg";
 import BackgroundDrizzleSky from "./Asset/Drizzle/drizzle.jpg";
 import BackgroundDefault from "./Asset/default.jpg";
+import BackgroundThunderstormSky from "./Asset/Thunderstorm/Thunderstorm.jpg";
 import ClearIcon from "./Asset/Icons/clear.png";
+import ThunderstormSky from "./Asset/Icons/thunder.png";
 import CloudyIcon from "./Asset/Icons/cloudy.png";
 import RainyIcon from "./Asset/Icons/rainy.png";
 import MistIcon from "./Asset/Icons/mist.png";
@@ -74,6 +76,8 @@ class App extends Component {
       this.setState((prevState) => ({ ...prevState, icon: CloudyIcon }));
     } else if (this.state.description === "Drizzle") {
       this.setState((prevState) => ({ ...prevState, icon: DrizzleIcon }));
+    } else if (this.state.description === "Thunderstorm") {
+      this.setState((prevState) => ({ ...prevState, icon: ThunderstormSky }));
     } else {
       this.setState((prevState) => ({ ...prevState, icon: ClearIcon }));
     }
@@ -109,6 +113,11 @@ class App extends Component {
       this.setState((prevState) => ({
         ...prevState,
         backgroundWeather: BackgroundDrizzleSky,
+      }));
+    } else if (this.state.description === "Thunderstorm") {
+      this.setState((prevState) => ({
+        ...prevState,
+        backgroundWeather: BackgroundThunderstormSky,
       }));
     } else {
       this.setState((prevState) => ({
@@ -261,7 +270,10 @@ class App extends Component {
       <Container id="main">
         <Row>
           <Col lg={8} md={4} style={{ paddingLeft: "0", paddingRight: "0" }}>
-            <Col className="weather-info">
+            <Col
+              className="weather-info"
+              style={{ top: this.state.description === "Clear" ? "-30%" : "" }}
+            >
               <span
                 className="temperature"
                 style={{
@@ -284,6 +296,7 @@ class App extends Component {
                     animation: this.state.icon
                       ? "backgroundWeather 3s ease 0s forwards"
                       : "",
+                    top: this.state.description === "Clear" ? "97%" : "",
                   }}
                   src={this.state.icon}
                   alt={""}
