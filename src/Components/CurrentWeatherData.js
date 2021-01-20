@@ -6,7 +6,14 @@ const WeatherData = (props) => (
   <Container>
     <Row>
       <Col lg={12} style={{ padding: "0" }}>
-        <div id="main-weather-data">
+        <div
+          id="main-weather-data"
+          style={{
+            animation: props.weatherdata
+              ? "WeatherData 3s ease 0s forwards"
+              : "",
+          }}
+        >
           <div className="leftside-current-weather">
             <div>{props.temperature && <span> Temperature </span>}</div>
             <div>{props.city && props.country && <span> Location</span>}</div>

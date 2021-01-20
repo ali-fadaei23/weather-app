@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import BackgroundClearSky from "./Asset/ClearSky/clear-sky-3.jpg";
 import BackgroundHazeySky from "./Asset/Haze/haze.jpg";
-import BackgroundCloudySky from "./Asset/Cloudy/cloudy-1.jpg";
+import BackgroundCloudySky from "./Asset/Cloudy/cloudy-4.jpg";
 import BackgroundSnowySky from "./Asset/Snowy/snowy-1.jpg";
 import BackgroundRainySky from "./Asset/Rainy/rainy-1.jpg";
 import BackgroundDrizzleSky from "./Asset/Drizzle/drizzle.jpg";
@@ -269,7 +269,7 @@ class App extends Component {
     return (
       <Container id="main">
         <Row>
-          <Col lg={8} md={4} style={{ paddingLeft: "0", paddingRight: "0" }}>
+          <Col lg={8} md={8} style={{ paddingLeft: "0", paddingRight: "0" }}>
             <Col
               className="weather-info"
               style={{ top: this.state.description === "Clear" ? "-30%" : "" }}
@@ -278,13 +278,19 @@ class App extends Component {
                 className="temperature"
                 style={{
                   animation: this.state.temperature
-                    ? "Weather 3s ease 0s forwards"
+                    ? "Weather 2s ease 0s forwards"
                     : "",
                 }}
               >
                 {this.state.temperature}
               </span>
-              <div>
+              <div
+                style={{
+                  animation: this.state.temperature
+                    ? "Weather 2s ease 0s forwards"
+                    : "",
+                }}
+              >
                 <span className="date">{this.state.date}</span>
 
                 <span className="location">{this.state.city}</span>
@@ -294,7 +300,7 @@ class App extends Component {
                   className="icon-weather"
                   style={{
                     animation: this.state.icon
-                      ? "backgroundWeather 3s ease 0s forwards"
+                      ? "iconWeather 2s 0s forwards"
                       : "",
                     top: this.state.description === "Clear" ? "97%" : "",
                   }}
@@ -305,16 +311,11 @@ class App extends Component {
             </Col>
             <img
               className="img-weather"
-              style={{
-                animation: this.state.temperature
-                  ? "backgroundWeather 3s ease -1s forwards"
-                  : "",
-              }}
               src={this.state.backgroundWeather}
               alt={""}
             />
           </Col>
-          <Col lg={4}>
+          <Col lg={4} md={4}>
             <div id="background-weather">
               <div className="blur-background-weather">
                 <div>
@@ -332,6 +333,7 @@ class App extends Component {
                       humidity={this.state.humidity}
                       speed={this.state.speed}
                       description={this.state.description}
+                      weatherdata={this.state.animation}
                     />
                   ) : (
                     <div>

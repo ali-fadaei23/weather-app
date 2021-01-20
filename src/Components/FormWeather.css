@@ -10,14 +10,7 @@
 @media only screen and (min-width: 600px) {
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-
-@media only screen and (min-width: 768px) {
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   #form {
     display: flex;
     place-content: center;
@@ -28,6 +21,97 @@
   .form-weather {
     display: inline;
     float: left;
+  }
+
+  .img-weather {
+    transition: all 0.3s ease 0.1s;
+  }
+
+  .input-location {
+    background: transparent;
+    border-radius: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-family: "Baloo Tammudu 2", cursive;
+    transition: all 0.3s ease 0.1s;
+    padding-right: 0;
+  }
+
+  .input-location:hover {
+    border-bottom-color: #80bdff;
+  }
+
+  .input-location:focus {
+    box-shadow: inset 0 0 0px 0;
+    background: transparent;
+    border-radius: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+  }
+
+  .btn-weather {
+    display: inline;
+    float: right;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  #form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+  }
+
+  .btn-get-weather {
+    margin-top: 3%;
+  }
+
+  .img-weather {
+    transition: all 0.3s ease 0.1s;
+  }
+
+  .input-location {
+    background: transparent;
+    border-radius: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-family: "Baloo Tammudu 2", cursive;
+    font-size: 16px;
+    transition: all 0.3s ease 0.1s;
+    padding-right: 0;
+  }
+
+  .input-location:hover {
+    border-bottom-color: #80bdff;
+  }
+
+  .input-location:focus {
+    box-shadow: inset 0 0 0px 0;
+    background: transparent;
+    border-radius: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+  }
+
+  .btn-weather {
+    display: inline;
+    float: right;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+  }
+
+  .btn-get-weather {
+    margin-top: 3%;
   }
 
   .img-weather {

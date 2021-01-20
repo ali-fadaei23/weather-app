@@ -9,6 +9,7 @@
 /* font-family: 'Bebas Neue', cursive; */
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 /* font-family: 'Righteous', cursive; */
+
 /* ############### Default Style ############### */
 * {
   font-family: "Sulphur Point", sans-serif;
@@ -22,46 +23,7 @@ body {
 }
 
 /* ############## Responsive App ############## */
-/* .col-1 {
-  width: 8.33%;
-}
-.col-2 {
-  width: 16.66%;
-}
-.col-3 {
-  width: 25%;
-}
-.col-4 {
-  width: 33.33%;
-}
-.col-5 {
-  width: 41.66%;
-}
-.col-6 {
-  width: 50%;
-}
-.col-7 {
-  width: 58.33%;
-}
-.col-8 {
-  width: 66.66%;
-}
-.col-9 {
-  width: 75%;
-}
-.col-10 {
-  width: 83.33%;
-}
-.col-11 {
-  width: 91.66%;
-}
-.col-12 {
-  width: 100%;
-} */
-
-/* Large devices (laptops/desktops, 992px and up) */
-
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   #root {
     display: flex;
     align-items: center;
@@ -86,7 +48,6 @@ body {
     transition: all 0.3s ease 0.1s;
   }
 
-  /* ############### App Style ############### */
   .btn:hover {
     border-color: #80bdff;
     background-color: transparent;
@@ -163,12 +124,10 @@ body {
 
   @keyframes Weather {
     from {
-      transform: translate(-50%);
-      opacity: 0;
+      transform: translate(50%);
     }
     to {
       transform: translate(0);
-      opacity: 1;
     }
   }
 
@@ -201,10 +160,180 @@ body {
 
   @keyframes iconWeather {
     from {
-      opacity: 1;
+      transform: translate(0, -70%);
     }
     to {
-      opacity: 0;
+      transform: translate(0, 0);
+    }
+  }
+
+  .img-weather {
+    width: 100%;
+  }
+
+  .forecast-data {
+    color: #ffffff;
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .leftside-forecast-weather {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-left: 10px;
+  }
+  .rightside-forecast-weather {
+    display: block;
+    text-align: right;
+    width: 100%;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  #root {
+    display: flex;
+    align-items: center;
+  }
+
+  html {
+    display: flex;
+  }
+
+  body {
+    background-image: url(Asset/Background/background-weather.jpg);
+    backdrop-filter: blur(10px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex: 1;
+  }
+
+  .btn {
+    background: transparent;
+    border-radius: 0;
+    border-color: #ffffff;
+    transition: all 0.3s ease 0.1s;
+    height: 35px;
+    width: 110px;
+    font-size: 14px;
+  }
+  .btn:hover {
+    border-color: #80bdff;
+    background-color: transparent;
+    color: #80bdff;
+  }
+
+  .btn:not(:disabled):not(.disabled):active {
+    border-color: #80bdff;
+    background-color: transparent;
+    color: #80bdff;
+  }
+
+  .btn:focus-visible {
+    box-shadow: inset 0 0 0px 0;
+    background: transparent;
+    border-radius: 0;
+    border-color: #3adde2;
+    color: #3adde2;
+  }
+
+  .btn:focus-within {
+    box-shadow: inset 0 0 0px 0;
+    background: transparent;
+    border-radius: 0;
+    color: #3adde2;
+    border-color: #3adde2;
+  }
+
+  #main {
+    filter: drop-shadow(3px 4px 9px #000000);
+    text-align: center;
+  }
+
+  #background-weather {
+    background-image: url(Asset/Background/background-weather-4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .blur-background-weather {
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .weather-info {
+    display: inline-flex;
+    align-items: center;
+    position: absolute;
+    top: 54%;
+    left: 0;
+    right: 0;
+    bottom: 20%;
+    color: #ffffff;
+    margin-left: 4rem;
+    z-index: 1;
+    mix-blend-mode: screen;
+  }
+
+  .temperature {
+    font-size: 100px;
+    margin-right: 5px;
+  }
+
+  @keyframes Weather {
+    from {
+      transform: translate(50%);
+    }
+    to {
+      transform: translate(0);
+    }
+  }
+
+  .date {
+    display: block;
+    background: #ffffff;
+    color: #000000;
+    mix-blend-mode: screen;
+    padding: 0 10px;
+    font-family: "Righteous", cursive;
+  }
+
+  .location {
+    display: flex;
+    color: #ffffff;
+    font-family: "Righteous", cursive;
+  }
+
+  .icon-weather {
+    filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%)
+      contrast(80%);
+    position: absolute;
+    top: 90%;
+    left: 73%;
+    right: 0;
+    bottom: 0;
+    width: 115px;
+    height: 115px;
+  }
+
+  @keyframes iconWeather {
+    from {
+      transform: translate(0, -70%);
+    }
+    to {
+      transform: translate(0, 0);
     }
   }
 
@@ -240,6 +369,173 @@ body {
   }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #root {
+    display: flex;
+    align-items: center;
+  }
+
+  html {
+    display: flex;
+  }
+
+  body {
+    background-image: url(Asset/Background/background-weather.jpg);
+    backdrop-filter: blur(10px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex: 1;
+  }
+
+  .btn {
+    background: transparent;
+    border-radius: 0;
+    border-color: #ffffff;
+    transition: all 0.3s ease 0.1s;
+  }
+
+  .btn:hover {
+    border-color: #80bdff;
+    background-color: transparent;
+    color: #80bdff;
+  }
+
+  .btn:not(:disabled):not(.disabled):active {
+    border-color: #80bdff;
+    background-color: transparent;
+    color: #80bdff;
+  }
+
+  .btn:focus-visible {
+    box-shadow: inset 0 0 0px 0;
+    background: transparent;
+    border-radius: 0;
+    border-color: #3adde2;
+    color: #3adde2;
+  }
+
+  .btn:focus-within {
+    box-shadow: inset 0 0 0px 0;
+    background: transparent;
+    border-radius: 0;
+    color: #3adde2;
+    border-color: #3adde2;
+  }
+
+  #main {
+    filter: drop-shadow(3px 4px 9px #000000);
+    text-align: center;
+  }
+
+  #background-weather {
+    background-image: url(Asset/Background/background-weather-4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .blur-background-weather {
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .weather-info {
+    display: inline-flex;
+    align-items: center;
+    position: absolute;
+    top: 54%;
+    left: 0;
+    right: 0;
+    bottom: 20%;
+    color: #ffffff;
+    margin-left: 4rem;
+    z-index: 1;
+    mix-blend-mode: screen;
+  }
+
+  .temperature {
+    font-size: 100px;
+    margin-right: 5px;
+  }
+
+  @keyframes Weather {
+    from {
+      transform: translate(50%);
+    }
+    to {
+      transform: translate(0);
+    }
+  }
+
+  .date {
+    display: block;
+    background: #ffffff;
+    color: #000000;
+    mix-blend-mode: screen;
+    padding: 0 10px;
+    font-family: "Righteous", cursive;
+  }
+
+  .location {
+    display: flex;
+    color: #ffffff;
+    font-family: "Righteous", cursive;
+  }
+
+  .icon-weather {
+    filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%)
+      contrast(80%);
+    position: absolute;
+    top: 90%;
+    left: 73%;
+    right: 0;
+    bottom: 0;
+    width: 115px;
+    height: 115px;
+  }
+
+  @keyframes iconWeather {
+    from {
+      transform: translate(0, -70%);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
+
+  .img-weather {
+    width: 100%;
+  }
+
+  .forecast-data {
+    color: #ffffff;
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .leftside-forecast-weather {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-left: 10px;
+  }
+  .rightside-forecast-weather {
+    display: block;
+    text-align: right;
+    width: 100%;
+    margin-right: 10px;
+  }
+}
 /* Extra small devices (phones, 600px and down) */
 
 @media only screen and (max-width: 600px) {
@@ -248,9 +544,4 @@ body {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 
 @media only screen and (min-width: 600px) {
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-
-@media only screen and (min-width: 768px) {
 }
