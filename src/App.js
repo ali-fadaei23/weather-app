@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import "./App.css";
-import BackgroundClearSky from "./Asset/ClearSky/clear-sky-3.jpg";
+import BackgroundClearSky from "./Asset/ClearSky/clear-sky.jpg";
 import BackgroundHazeySky from "./Asset/Haze/haze.jpg";
-import BackgroundCloudySky from "./Asset/Cloudy/cloudy-4.jpg";
-import BackgroundSnowySky from "./Asset/Snowy/snowy-1.jpg";
-import BackgroundRainySky from "./Asset/Rainy/rainy-1.jpg";
+import BackgroundCloudySky from "./Asset/Cloudy/cloudy.jpg";
+import BackgroundSnowySky from "./Asset/Snowy/snowy.jpg";
+import BackgroundRainySky from "./Asset/Rainy/rainy.jpg";
 import BackgroundDrizzleSky from "./Asset/Drizzle/drizzle.jpg";
 import BackgroundDefault from "./Asset/default.jpg";
 import BackgroundThunderstormSky from "./Asset/Thunderstorm/Thunderstorm.jpg";
@@ -288,7 +288,7 @@ class App extends Component {
                 style={{
                   animation: this.state.temperature
                     ? "Weather 2s ease 0s forwards"
-                    : "",
+                    : "", fontSize: "14px"
                 }}
               >
                 <span className="date">{this.state.date}</span>

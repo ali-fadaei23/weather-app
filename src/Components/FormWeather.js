@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 const FormWeather = (props) => (
   <Container>
     <Row>
-      <Col lg={12} md={10}>
+      <Col>
         <Form id="form" onSubmit={props.onSubmit}>
           <div className="form-weather ">
             <Form.Control

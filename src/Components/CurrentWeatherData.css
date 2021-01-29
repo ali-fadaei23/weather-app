@@ -1,39 +1,4 @@
-#main-weather-data {
-  color: #ffffff;
-  display: flex;
-  margin-top: 10px;
-}
-
-.leftside-current-weather {
-  display: block;
-  text-align: left;
-  width: 100%;
-  margin-left: 10px;
-}
-
-.rightside-current-weather {
-  display: block;
-  text-align: right;
-  width: 100%;
-  margin-right: 10px;
-}
-
 /* ############## Responsive App ############## */
-
-/* Extra small devices (phones, 600px and down) */
-
-@media only screen and (max-width: 600px) {
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-
-@media only screen and (min-width: 600px) {
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-
-/* Large devices (laptops/desktops, 992px and up) */
-
 @media only screen and (min-width: 1200px) {
   #main-weather-data {
     color: #ffffff;
@@ -125,4 +90,38 @@
     width: 100%;
     margin-right: 10px;
   }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  #main-weather-data {
+    color: #ffffff;
+    display: flex;
+    margin-top: 10px;
+  }
+
+  @keyframes weatherData {
+    from {
+      transform: translate(50%);
+    }
+    to {
+      transform: translate(0);
+    }
+  }
+
+  .leftside-current-weather {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-left: 10px;
+  }
+
+  .rightside-current-weather {
+    display: block;
+    text-align: right;
+    width: 100%;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
 }

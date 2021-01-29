@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 const WeatherData = (props) => (
   <Container>
     <Row>
-      <Col lg={12} style={{ padding: "0" }}>
+      <Col style={{ padding: "0" }}>
         <div
           id="main-weather-data"
           style={{

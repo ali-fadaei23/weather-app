@@ -6,9 +6,13 @@ import { Container, Row, Col } from "react-bootstrap";
 const WeatherForecastData = (props) => (
   <Container>
     <Row>
-      <Col lg={12} style={{ padding: "0" }}>
+      <Col style={{ padding: "0" }}>
         <div id="forecast-container">
-          <div>
+          <div
+            style={{
+              marginTop: "1%",
+            }}
+          >
             <Button
               className="btn-forecast-weather"
               onClick={props.onClick}

@@ -39,9 +39,9 @@
     display: flex;
   }
 
- .btn-forecast-weather {
-   width: 126px;
- }
+  .btn-forecast-weather {
+    width: 126px;
+  }
 
   .forecast-detail {
     flex: 1;
@@ -108,14 +108,40 @@
   }
 }
 
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .forecast-info {
+    display: flex;
+  }
+
+  .forecast-detail {
+    flex: 1;
+    height: 4.2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .forecast-detail::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  .forecast-detail::-webkit-scrollbar-track {
+    padding: 0;
+    margin-bottom: 1px;
+    background: transparent;
+    border-radius: 1px;
+  }
+
+  .forecast-detail::-webkit-scrollbar-thumb {
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    border-color: #ffffff;
+  }
+
+  .forecast-detail::-webkit-scrollbar-thumb:hover {
+    border-color: #80bdff;
+  }
+}
+
 @media only screen and (max-width: 600px) {
 }
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-
-@media only screen and (min-width: 600px) {
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-
-/* Large devices (laptops/desktops, 992px and up) */
